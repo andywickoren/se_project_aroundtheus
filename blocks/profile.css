@@ -14,7 +14,7 @@
   grid-template-columns: minmax(auto, 415px) auto;
 }
 
-.profile__edit_button {
+.profile__edit-button {
   background: transparent url(../images/edit-button.svg) center no-repeat;
   height: 24px;
   width: 24px;
