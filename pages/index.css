@@ -1,0 +1,84 @@
+@import url("../vendor/normalize.css");
+@import url("../vendor/fonts.css");
+@import url("../blocks/card.css");
+@import url("../blocks/cards.css");
+@import url("../blocks/footer.css");
+@import url("../blocks/header.css");
+@import url("../blocks/logo.css");
+@import url("../blocks/page.css");
+@import url("../blocks/profile.css");
+@media screen and (max-width: 940px) {
+  .page__section {
+    max-width: 725px;
+  }
+
+  .profile__title {
+    font-size: 35px;
+  }
+
+  .profile__description {
+    font-size: 16px;
+  }
+
+  .profile__info {
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .page__section {
+    max-width: 620px;
+    margin-bottom: 45px;
+  }
+
+  .header {
+    margin: 0;
+  }
+
+  .page__content {
+    padding: 0;
+  }
+
+  .card__list {
+    padding: 20px;
+  }
+
+  .logo {
+    width: 126px;
+    height: 24px;
+    margin: 45px 0 450px 27px;
+    align-self: center;
+    margin-bottom: auto;
+  }
+
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__title {
+    font-size: 22px;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 610px;
+    justify-content: center;
+    margin: 25px 12px;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile__edit_button {
+    margin-left: 12px;
+  }
+
+  .profile__add-button {
+    margin: 0;
+    width: 100%;
+    border: none;
+  }
+}
