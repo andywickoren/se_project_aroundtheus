@@ -1,11 +1,17 @@
 .header {
-  margin-top: 45px;
   font-family: "Inter", Arial, sans-serif;
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   letter-spacing: 0em;
   text-align: left;
-  border-bottom: 1px solid #545454;
-  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  padding-bottom: 41px;
+  padding-top: 45px;
+}
+
+@media screen and (max-width: 620px) {
+  .header {
+    padding: 0 0 32px;
+  }
 }

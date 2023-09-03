@@ -1,21 +1,23 @@
-# Project 3: Around The U.S.
+# Project Title
 
-### Overview  
+Around The U.S.
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+### Key Features
+
+--Responsive Design: This project is made to adapt seamlessly to various screen sizes. It optimizes the user experience by dynamically adjusting its layout for three commonly used screen dimensions through the use of media queries.
+
+The project was created based on a Figma design (attached) with careful attention to precisely and accurately replicate the original design.
+
+--Grid template: the symmetrical and adaptive layout was achieved using CSS grid.
+
+## Future Improvements
+
+I think the layout could be improved around the 650-725px screen width range. The button elements and the subtitle might be reconfigured so there is more space and improved aesthetic.
+
+There are definitely opportunities to enhance user interactivity with JavaScript. This page would be a solid foundation for something more dynamic.
+
+**Figma**
+
+- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+
+**GitHub**

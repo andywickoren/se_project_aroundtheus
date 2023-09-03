@@ -16,3 +16,15 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+@media screen and (max-width: 940px) {
+  .page__section {
+    max-width: 725px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .page__content {
+    padding: 0;
+  }
+}
