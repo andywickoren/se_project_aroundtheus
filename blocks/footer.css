@@ -28,6 +28,11 @@
 @media screen and (max-width: 580px) {
   .footer {
     max-width: calc(100% - 30px);
-    padding-left: 19px;
+    padding: 48px 0 36px 19px;
+  }
+
+  .footer__info {
+    font-size: 14px;
+    line-height: 16.94px;
   }
 }
