@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the U.S.</title>
     <link href="./pages/index.css" rel="stylesheet" />
-    <script src="./scripts/index.js"></script>
   </head>
   <body class="page">
     <div class="page__content">
@@ -106,5 +105,17 @@
         <p class="footer__info">© 2022 Around The U.S.</p>
       </footer>
     </div>
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Edit Profile</p>
+        <form class="modal__form">
+          <input class="field1" type="text" name="title" />
+          <input class="field2" type="text" name="description" />
+          <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
