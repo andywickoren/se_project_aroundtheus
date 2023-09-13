@@ -13,11 +13,11 @@
   justify-content: center;
   display: flex;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
 
 .modal_opened {
-  /* display: flex; */
+  display: flex;
 }
 
 .modal__heading {
@@ -50,8 +50,7 @@
   padding-bottom: 13px;
   border: none;
   outline: none;
-  border-bottom: 1px solid #000;
-  opacity: 0.2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .field2 {
@@ -59,8 +58,7 @@
   padding-bottom: 13px;
   border: none;
   outline: none;
-  border-bottom: 1px solid #000;
-  opacity: 0.2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .modal__button {
@@ -87,46 +85,35 @@
   background-size: contain;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 580px) {
   .modal__container {
-    padding: 19px;
-    height: 282px;
-    width: 322px;
-    /* padding: 36px;
-        background-color: #fff;
-        margin: auto;
-        border-radius: 10px;
-        position: relative;
-        height: 258px; */
+    padding: 25px 22px;
+    height: 322px;
+  }
+
+  .modal__heading {
+    margin: 0 0 75px 0;
   }
 
   .modal__button {
     width: 238px;
-    height: 26px;
+    height: 46px;
     border-radius: 2px;
     font-family: "Inter", Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
+    margin-bottom: 0;
     line-height: 17px;
   }
 
   .field1 {
-    margin-bottom: 17px;
+    margin-bottom: 30px;
     padding-bottom: 13px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #000;
-    opacity: 0.2;
     width: 238px;
   }
 
   .field2 {
     width: 238px;
-    margin-bottom: 35px;
-    padding-bottom: 13px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #000;
-    opacity: 0.2;
+    margin-bottom: 45px;
   }
 }
