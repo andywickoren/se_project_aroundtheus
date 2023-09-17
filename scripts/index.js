@@ -25,6 +25,14 @@ let initialCards = [
   },
 ];
 
+// profileEditButton.addEventListener("click", () => {
+//   profileEditModal.classList.add("modal_opened");
+// });
+
+// modalCloseButton.addEventListener("click", () => {
+//   profileEditModal.classList.remove("modal_opened");
+// });
+
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                    Elements                                    ||
 // ! ||--------------------------------------------------------------------------------||
@@ -41,17 +49,17 @@ const profileDescriptionInput = document.querySelector(
 
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 
-// ! ||--------------------------------------------------------------------------------||
-// ! ||                                   Functions;                                   ||
-// ! ||--------------------------------------------------------------------------------||
+// // ! ||--------------------------------------------------------------------------------||
+// // ! ||                                   Functions;                                   ||
+// // ! ||--------------------------------------------------------------------------------||
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
 }
 
-// ! ||--------------------------------------------------------------------------------||
-// ! ||                                 Event Handlers                                 ||
-// ! ||--------------------------------------------------------------------------------||
+// // ! ||--------------------------------------------------------------------------------||
+// // ! ||                                 Event Handlers                                 ||
+// // ! ||--------------------------------------------------------------------------------||
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -60,12 +68,12 @@ function handleProfileEditSubmit(e) {
   closePopup();
 }
 
-// ! ||--------------------------------------------------------------------------------||
-// ! ||                                 Event Listeners                                ||
-// ! ||--------------------------------------------------------------------------------||
+// // ! ||--------------------------------------------------------------------------------||
+// // ! ||                                 Event Listeners                                ||
+// // ! ||--------------------------------------------------------------------------------||
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  // profileTitleInput.value = profileTitle.textContent;
+  // profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal_opened");
 });
 
@@ -73,4 +81,4 @@ modalCloseButton.addEventListener("click", () => {
   closePopup();
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
