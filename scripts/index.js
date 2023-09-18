@@ -72,8 +72,8 @@ function handleProfileEditSubmit(e) {
 // // ! ||                                 Event Listeners                                ||
 // // ! ||--------------------------------------------------------------------------------||
 profileEditButton.addEventListener("click", () => {
-  // profileTitleInput.value = profileTitle.textContent;
-  // profileDescriptionInput.value = profileDescription.textContent;
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal_opened");
 });
 
@@ -81,4 +81,4 @@ modalCloseButton.addEventListener("click", () => {
   closePopup();
 });
 
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
