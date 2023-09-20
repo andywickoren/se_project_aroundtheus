@@ -58,14 +58,18 @@ const cardTemplate =
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
+}
 
-  function getCardElement(data) {
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardImageEl = cardElement.querySelector(".card__image");
-    const cardTitleEl = cardElement.querySelector(".card__title");
-    cardTitleEl.textContent = cardData.name;
-    cardListEl.append(cardElement);
-  }
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  cardTitleEl.textContent = cardData.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  cardTitleEl.textContent = cardData.name;
+  // cardListEl.append(cardElement);
+  return cardElement;
 }
 
 // // ! ||--------------------------------------------------------------------------------||
