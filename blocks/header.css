@@ -15,26 +15,3 @@
     padding: 0 0 32px;
   }
 }
-
-/* @media screen and (max-width: 480px) {
-  .header {
-    min-height: 85px;
-  }
-  .header::before {
-    width: calc(100% + 40px);
-  }
-}
-
-.header__logo {
-  width: 173px;
-  height: 33px;
-  object-fit: contain;
-}
-
-@media screen and (max-width: 480px) {
-  .header__logo {
-    width: 126px;
-    height: 24px;
-    margin: 0 0 7px;
-  }
-} */
