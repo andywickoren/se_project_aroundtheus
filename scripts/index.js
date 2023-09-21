@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -31,7 +31,7 @@ let initialCards = [
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const modalCloseButton = document.querySelector("#modal-close-button");
+const modalCloseButton = profileEditModal.querySelector("#modal-close-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -62,6 +62,22 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function openProfileModal() {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  profileEditModal.classList.add("modal_opened");
+}
+
+function fillProfileForm() {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+}
+
+function openEditProfileModal() {
+  fillProfileForm();
+  profileEditModal.classList.add("modal_opened");
+}
+
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Handlers                                 ||
 // // ! ||--------------------------------------------------------------------------------||
@@ -76,11 +92,8 @@ function handleProfileEditSubmit(e) {
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Listeners                                ||
 // // ! ||--------------------------------------------------------------------------------||
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal_opened");
-});
+
+profileEditButton.addEventListener("click", openProfileModal);
 
 modalCloseButton.addEventListener("click", () => {
   closePopup();
