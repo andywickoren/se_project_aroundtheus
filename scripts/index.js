@@ -62,12 +62,6 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function openProfileModal() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal_opened");
-}
-
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -93,7 +87,7 @@ function handleProfileEditSubmit(e) {
 // // ! ||                                 Event Listeners                                ||
 // // ! ||--------------------------------------------------------------------------------||
 
-profileEditButton.addEventListener("click", openProfileModal);
+profileEditButton.addEventListener("click", openEditProfileModal);
 
 modalCloseButton.addEventListener("click", () => {
   closePopup();
