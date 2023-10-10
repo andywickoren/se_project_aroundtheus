@@ -14,6 +14,7 @@
   display: flex;
   align-items: center;
   display: none;
+  overflow: hidden;
 }
 
 .modal_opened {
@@ -95,6 +96,15 @@
 .modal__save-button:hover {
   cursor: pointer;
   opacity: 80%;
+}
+
+.modal__preview-image {
+  max-width: 75vw;
+  max-height: 75vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 580px) {

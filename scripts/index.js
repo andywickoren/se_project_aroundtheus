@@ -32,6 +32,8 @@ const initialCards = [
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
+const previewTemplate = document.querySelector("#preview-template");
+
 // Wrappers
 const cardsWrap = document.querySelector(".cards__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -112,7 +114,8 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  const previewImageModal = document.getElementById("preview-image-modal");
+  const previewImageModal = document.querySelector("#preview-image-modal");
+  const previewImage = document.querySelector(".modal__preview-image");
   // find delete button
 
   //add event listener to the delete button
@@ -131,6 +134,7 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewImageModal);
+    previewImage.src = cardData.link;
   });
 
   cardImageEl.src = cardData.link;
