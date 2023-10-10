@@ -19,12 +19,12 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="images/jacques-cousteau.jpg"
+            src="images/AndyWickGreen.JPG"
             alt="avatar"
             class="profile__image"
           />
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name">Joseph Wickoren</h1>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
@@ -100,9 +100,12 @@
         </form>
       </div>
     </div>
+    <!--Add preview image modal-->
+    <div class="modal" id="preview-image-modal"></div>
 
     <template id="card-template">
       <li class="card">
+        <button class="card__delete-button" type="button"></button>
         <img src="" alt="" class="card__image" />
         <div class="card__description">
           <h2 class="card__title"></h2>
