@@ -20,6 +20,10 @@
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
+#preview-image-modal {
+  /* position: relative; */
+}
+
 .modal_opened {
   display: flex;
   visibility: visible;
@@ -34,6 +38,18 @@
   position: relative;
   width: 100%;
   max-width: 358px;
+}
+
+.modal__container_preview-image {
+  padding: 0;
+  border-radius: 0;
+  /* position: relative; */
+  height: auto;
+  width: auto;
+  max-width: 75vw;
+  max-height: 75vh;
+  display: flex;
+  background: transparent;
 }
 
 .modal__close {
