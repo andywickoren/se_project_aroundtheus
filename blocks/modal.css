@@ -6,12 +6,10 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: flex;
   padding: 0 19px;
   max-width: 100%;
   width: 100%;
   justify-content: center;
-  display: flex;
   align-items: center;
   display: none;
   overflow: hidden;
