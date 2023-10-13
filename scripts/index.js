@@ -45,13 +45,13 @@ const addCardFormElement = addCardModal.querySelector(".modal__form");
 //Buttons
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileModalCloseButton = profileEditModal.querySelector(
-  "#modal-close-button"
+  "#edit-modal-close-button"
 );
 const addCardModalCloseButton = addCardModal.querySelector(
-  "#modal-close-button"
+  "#add-card-modal-close-button"
 );
 const previewModalCloseButton = previewImageModal.querySelector(
-  "#modal-close-button"
+  "#preview-modal-close-button"
 );
 
 //Form data
