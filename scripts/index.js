@@ -125,6 +125,7 @@ function getCardElement(cardData) {
   cardImageEl.addEventListener("click", () => {
     openModal(previewImageModal);
     previewImage.src = cardData.link;
+    previewImage.alt = "Photo of ${cardData.name}";
     previewImageLabel.textContent = cardTitleEl.textContent;
   });
 
@@ -142,7 +143,7 @@ function getCardElement(cardData) {
 profileFormElement.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 profileEditButton.addEventListener("click", () => {
-  profileNameInput.value = profileDescription.textContent;
+  profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
 });
