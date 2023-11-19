@@ -1,5 +1,7 @@
 console.log("hello from validation.js");
 
+//before refactor
+
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 
