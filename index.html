@@ -51,21 +51,30 @@
           id="edit-modal-close-button"
         ></button>
         <h3 class="modal__heading">Edit Profile</h3>
-        <form class="modal__form">
-          <input
-            class="modal__input modal__input_type_name"
-            type="text"
-            name="title"
-            placeholder="Name"
-            required
-          />
-          <input
-            class="modal__input modal__input_type_description"
-            type="text"
-            name="description"
-            placeholder="Description"
-            required
-          />
+        <form class="modal__form" id="edit-modal-form" novalidate>
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_name"
+              id="owner-name"
+              type="text"
+              name="title"
+              placeholder="Name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error" id="owner-name-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_description"
+              type="text"
+              name="description"
+              placeholder="Description"
+              required
+            />
+            <span class="modal__error modal__input_type_error"></span>
+          </label>
           <button class="modal__save-button" type="submit">Save</button>
         </form>
       </div>
@@ -128,5 +137,6 @@
       </li>
     </template>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
   </body>
 </html>
