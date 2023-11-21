@@ -107,10 +107,14 @@
 }
 
 .modal__input_type_error {
+  border-bottom: 1px solid #ff0000;
+}
+
+.modal__error_visible {
 }
 
 #owner-name-error {
-  border-bottom: 1px solid #ff0000;
+  /* border-bottom: 1px solid #ff0000; */
 }
 
 .modal__error {
@@ -140,6 +144,10 @@
 .modal__save-button:hover {
   cursor: pointer;
   opacity: 80%;
+}
+
+.modal__save-button_disabled {
+  opacity: 0.5;
 }
 
 .modal__preview-image {
