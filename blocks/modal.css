@@ -94,9 +94,9 @@
 
 .modal__input:last-of-type {
   margin-bottom: 35px;
-  border: none;
+  /* border: none;
   outline: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
 }
 
 .modal__label {
