@@ -196,6 +196,7 @@ function overlayClose(evt, modal) {
   // console.log(modal);
   console.log(evt.target);
   if (!modal.contains(evt.target)) {
+    // console.log("true");
     closeModal(modal);
     // Remove the event listener after the modal is closed
     // modal.removeEventListener("click", overlayClose);
@@ -207,7 +208,7 @@ function overlayClose(evt, modal) {
 // });
 
 profileEditModal.addEventListener("click", function (evt) {
-  overlayClose(evt, profileEditModalContainer);
+  overlayClose(evt, profileEditModal);
 });
 
 addCardModal.addEventListener("click", function (evt) {
@@ -245,3 +246,11 @@ previewModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
+
+//queryselector to find all modals on the page
+// you will need to do a for each on all popups and add an event listener on 'mousedown'
+//  handlePopupClose(evt) {
+//  if( evt.target.classList.contains('.modal') ||evt.target.classList.contains('.modal__close')){
+//   closeModal(evt.currentTarget);
+//  }
+// }
