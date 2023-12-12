@@ -46,6 +46,7 @@ const addCardModal = document.querySelector("#add-card-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
 const profileFormElement = profileEditModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
+const modalElements = document.querySelectorAll(".modal");
 
 //Buttons
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -91,21 +92,25 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 
-// function overlayClose(modalContainer, modalTrigger, modalWindow) {
-//   document.addEventListener("click", function (evt) {
-//     if (!modalContainer.contains(evt.target) && evt.target !== modalTrigger) {
-//       closeModal(modalWindow);
-//     }
-//   });
-// }
-
-function escapeClose(modal) {
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      closeModal(modal);
-    }
-  });
+function escapeClose(evt) {
+  if (evt.key === "Escape") {
+    const openModals = document.querySelectorAll(".modal_opened");
+    openModals.forEach((modal) => closeModal(modal));
+  }
 }
+
+function overlayClose(evt) {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.currentTarget);
+  }
+}
+
+modalElements.forEach((modal) => {
+  modal.addEventListener("mousedown", overlayClose);
+});
 
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Handlers                                 ||
@@ -153,8 +158,6 @@ function getCardElement(cardData) {
     previewImage.src = cardData.link;
     previewImage.alt = `Photo of ${cardData.name}`;
     previewImageLabel.textContent = cardTitleEl.textContent;
-
-    // overlayClose(imageModalContainer, cardImageEl, previewImageModal);
   });
 
   cardImageEl.src = cardData.link;
@@ -163,53 +166,11 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-// overlayClose(modalContainer, profileEditButton, profileEditModal);
-// overlayClose(modalContainer, addNewCardButton, addCardModal);
-// overlayClose(imageModalContainer, cardImageEl, previewImageModal);
-
-escapeClose(profileEditModal);
-escapeClose(addCardModal);
-
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Listeners                                ||
 // // ! ||--------------------------------------------------------------------------------||
 
 // Form Listeners
-
-// document.addEventListener("keydown", function (event) {
-//   if (event.key === "Escape") {
-//     closeModal(profileEditModal);
-//     closeModal(addCardModal);
-//   }
-// });
-
-// document.addEventListener("click", function (evt) {
-//   if (
-//     !modalContainer.contains(evt.target) &&
-//     evt.target !== profileEditButton
-//   ) {
-//     closeModal(profileEditModal);
-//   }
-// });
-
-// function overlayClose(evt, modal) {
-//   // console.log(modal);
-//   console.log(evt.target);
-// if (!modal.contains(evt.target)) {
-// console.log("true");
-// closeModal(modal);
-// Remove the event listener after the modal is closed
-//     // modal.removeEventListener("click", overlayClose);
-//   }
-// }
-
-// document.addEventListener("click", function (evt) {
-//   console.log(evt.target.classList);
-// // });
-
-// profileEditModal.addEventListener("click", function (evt) {
-//   overlayClose(evt, profileEditModal);
-// });
 
 addCardModal.addEventListener("click", function (evt) {
   if (!addCardModal.contains(evt.target)) {
@@ -251,22 +212,7 @@ document.addEventListener("click", function (evt) {
   }
 });
 
+document.addEventListener("mousedown", overlayClose);
+document.addEventListener("keydown", escapeClose);
+
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
-
-// queryselector to find all modals on the page
-// you will need to do a for each on all popups and add an event listener on 'mousedown'
-
-const modalElements = document.querySelectorAll(".modal");
-
-function overlayClose(evt) {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(evt.currentTarget);
-  }
-}
-
-modalElements.forEach((modal) => {
-  modal.addEventListener("mousedown", overlayClose);
-});
