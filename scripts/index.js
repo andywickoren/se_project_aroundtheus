@@ -154,7 +154,7 @@ function getCardElement(cardData) {
     previewImage.alt = `Photo of ${cardData.name}`;
     previewImageLabel.textContent = cardTitleEl.textContent;
 
-    overlayClose(imageModalContainer, cardImageEl, previewImageModal);
+    // overlayClose(imageModalContainer, cardImageEl, previewImageModal);
   });
 
   cardImageEl.src = cardData.link;
@@ -163,8 +163,8 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-overlayClose(modalContainer, profileEditButton, profileEditModal);
-overlayClose(modalContainer, addNewCardButton, addCardModal);
+// overlayClose(modalContainer, profileEditButton, profileEditModal);
+// overlayClose(modalContainer, addNewCardButton, addCardModal);
 // overlayClose(imageModalContainer, cardImageEl, previewImageModal);
 
 escapeClose(profileEditModal);
@@ -192,24 +192,24 @@ escapeClose(addCardModal);
 //   }
 // });
 
-function overlayClose(evt, modal) {
-  // console.log(modal);
-  console.log(evt.target);
-  if (!modal.contains(evt.target)) {
-    // console.log("true");
-    closeModal(modal);
-    // Remove the event listener after the modal is closed
-    // modal.removeEventListener("click", overlayClose);
-  }
-}
+// function overlayClose(evt, modal) {
+//   // console.log(modal);
+//   console.log(evt.target);
+// if (!modal.contains(evt.target)) {
+// console.log("true");
+// closeModal(modal);
+// Remove the event listener after the modal is closed
+//     // modal.removeEventListener("click", overlayClose);
+//   }
+// }
 
 // document.addEventListener("click", function (evt) {
 //   console.log(evt.target.classList);
-// });
+// // });
 
-profileEditModal.addEventListener("click", function (evt) {
-  overlayClose(evt, profileEditModal);
-});
+// profileEditModal.addEventListener("click", function (evt) {
+//   overlayClose(evt, profileEditModal);
+// });
 
 addCardModal.addEventListener("click", function (evt) {
   if (!addCardModal.contains(evt.target)) {
@@ -245,12 +245,28 @@ previewModalCloseButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
 
+document.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("modal")) {
+    console.log("clicked modal");
+  }
+});
+
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
-//queryselector to find all modals on the page
+// queryselector to find all modals on the page
 // you will need to do a for each on all popups and add an event listener on 'mousedown'
-//  handlePopupClose(evt) {
-//  if( evt.target.classList.contains('.modal') ||evt.target.classList.contains('.modal__close')){
-//   closeModal(evt.currentTarget);
-//  }
-// }
+
+const modalElements = document.querySelectorAll(".modal");
+
+function overlayClose(evt) {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.currentTarget);
+  }
+}
+
+modalElements.forEach((modal) => {
+  modal.addEventListener("mousedown", overlayClose);
+});
