@@ -1,12 +1,3 @@
-console.log("hello from validation.js");
-
-//before refactor
-
-// enabling validation by calling enableValidation()
-// pass all the settings on call
-
-//the escape and overlay click is the remaining javascript portion
-
 function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.add(inputErrorClass);
@@ -31,10 +22,6 @@ function checkInputValidity(formEl, inputEl, options) {
 function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
-
-// disableButton (add the class to disable)
-
-// enableButton (remove it as well)
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
@@ -67,19 +54,6 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-    // checkInputValidity(formEl, inputEl, options);
-    // showInputError(formEl, inputEl, { inputErrorClass, errorClass });
-
-    // look for all inputs inside of form
-    // loop through all the inputs to see if all are valid
-    // if any input is invalid
-    // grab the validation message
-    // add error class to input
-    // display error message
-    // disable button
-    // if all inputs are valid
-    // enable button
-    // reset error messages
   });
 }
 
