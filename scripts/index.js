@@ -142,18 +142,6 @@ function getCardElement(cardData) {
 
 // Form Listeners
 
-// addCardModal.addEventListener("click", function (evt) {
-//  if (!addCardModal.contains(evt.target)) {
-//    closeModal(modalWindow);
-//  }
-//});
-
-// previewImageModal.addEventListener("click", function (evt) {
-//   if (!previewImageModal.contains(evt.target)) {
-//     closeModal(modalWindow);
-//   }
-// });
-
 profileFormElement.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 profileEditButton.addEventListener("click", () => {
@@ -175,8 +163,5 @@ addCardModalCloseButton.addEventListener("click", () =>
 previewModalCloseButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
-
-// document.addEventListener("mousedown", overlayClose);
-// document.addEventListener("keydown", escapeClose);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
