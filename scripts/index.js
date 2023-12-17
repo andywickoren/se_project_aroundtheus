@@ -20,6 +20,10 @@ const previewImageModal = document.querySelector("#preview-image-modal");
 const profileFormElement = profileEditModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
 const modalElements = document.querySelectorAll(".modal");
+const previewImage = document.querySelector(".modal__preview-image");
+const previewImageLabel = previewImageModal.querySelector(
+  ".modal__image-label"
+);
 
 //Buttons
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -64,14 +68,14 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 
-function escapeClose(evt) {
+function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openModals = document.querySelectorAll(".modal_opened");
     openModals.forEach((modal) => closeModal(modal));
   }
 }
 
-function overlayClose(evt) {
+function handleModalClose(evt) {
   if (
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
@@ -81,7 +85,7 @@ function overlayClose(evt) {
 }
 
 modalElements.forEach((modal) => {
-  modal.addEventListener("mousedown", overlayClose);
+  modal.addEventListener("mousedown", handleModalClose);
 });
 
 // // ! ||--------------------------------------------------------------------------------||
@@ -110,10 +114,6 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  const previewImage = document.querySelector(".modal__preview-image");
-  const previewImageLabel = previewImageModal.querySelector(
-    ".modal__image-label"
-  );
 
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
@@ -150,10 +150,6 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
-
 //add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
@@ -163,5 +159,7 @@ addCardModalCloseButton.addEventListener("click", () =>
 previewModalCloseButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
+
+document.addEventListener("keydown", handleEscape);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
