@@ -1,0 +1,60 @@
+#@authorJosephWickoren
+
+from random import randint
+
+def main():
+    numRows = int(input("Number of rows: "))
+    numCols = int(input("Number of cols: "))
+    low = int(input("Lowest potential value: "))
+    high = int(input("Highest potential value: "))
+    matrix = []
+    
+    addDimensions(matrix, numRows, numCols)
+    fillMatrix(matrix, low, high)
+    highestValue=findHighest(matrix)
+    displayMatrix(matrix)
+    print(f"The highest value is {highest} and is located at {highestValue}")
+    
+# addDimensions creates storage for a rows x cols 
+# @param matrix The location of the matrix
+# @param numRows The number of rows
+# @param numCols The number of columns
+def addDimensions(matrix, numRows, numCols):
+    for row in range(numRows):
+        nextRow = [0] * numCols
+        matrix.append(nextRow)
+        
+        
+# fillMatrix fills a matrix with random integers in a range determined by user
+# @param matrix The matrix to fill
+# @param low The lowest random value
+# @param high The highest random value
+def fillMatrix(matrix, low, high):
+    for row in range(len(matrix)):
+        for col in range(len(matrix[row])):
+            matrix[row][col] = randint(low, high)
+            
+# displayMatrix displays a matrix in table format with a cell width of 4
+# @param matrix The matrix to display
+def displayMatrix(matrix):
+    for row in range(len(matrix)):
+        for col in range(len(matrix[row])):
+            print(f"{matrix[row][col]:4d}", end = "")
+        print()
+            
+# findHighest finds the location of the highest value in the matrix
+# @param matrix The matrix to search for the highest value
+# returns list containing a the row and column indices of the highest value
+def findHighest(matrix):
+    highestValue=matrix[0][0] 
+    for row in range(len(matrix)):
+        for col in range(len(matrix[row])):
+            if matrix[row][col] > highestValue :
+                highestValue = matrix[row][col]
+                highest = (row,col)
+            
+                
+    
+    return highest
+            
+main()
