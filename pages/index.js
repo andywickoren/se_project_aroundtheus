@@ -21,7 +21,7 @@ profileFormValidator.enableValidation();
 // ! ||                                    Elements                                    ||
 // ! ||--------------------------------------------------------------------------------||
 
-const initialCards = [
+const cardData = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -48,13 +48,12 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+// const cardData = {
+//   name: "Yosemite Valley",
+//   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+// };
 
-const card = new Card(cardData, "#card-template");
-card.getView();
+const cardImageEl = cardElement.querySelector(".card__image");
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -166,7 +165,7 @@ function handleAddCardFormSubmit(e) {
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
+  // const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
@@ -179,18 +178,27 @@ function getCardElement(cardData) {
     likeButton.classList.toggle("card__like-button_active");
   });
 
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewImageModal);
-    previewImage.src = cardData.link;
-    previewImage.alt = `Photo of ${cardData.name}`;
-    previewImageLabel.textContent = cardTitleEl.textContent;
-  });
+  // handleImageClick = cardImageEl.addEventListener("click", () => {
+  //   openModal(previewImageModal);
+  //   previewImage.src = cardData.link;
+  //   previewImage.alt = `Photo of ${cardData.name}`;
+  //   previewImageLabel.textContent = cardTitleEl.textContent;
+  // });
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
   return cardElement;
 }
+
+function handleImageClick() {
+  openModal(previewImageModal);
+  previewImage.src = cardData.link;
+  previewImage.alt = `Photo of ${cardData.name}`;
+  previewImageLabel.textContent = cardTitleEl.textContent;
+}
+
+cardImageEl.addEventListener("click", handleImageClick);
 
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Listeners                                ||
@@ -209,7 +217,7 @@ profileEditButton.addEventListener("click", () => {
 //add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
-initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
+// initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
 function human(n) {
   const name = n;
@@ -224,3 +232,14 @@ function human(n) {
     sayHowYouFeel,
   };
 }
+
+const card = new Card(cardData, "#card-template", handleImageClick);
+const cards = cardData.map(
+  (data) => new Card(data, "#card-template", handleImageClick)
+);
+cards.forEach((card) => {
+  const cardElement = card.getView();
+  // Append cardElement to the DOM, assuming you have a container element
+  // For example:
+  document.querySelector(".cards-container").appendChild(cardElement);
+});
