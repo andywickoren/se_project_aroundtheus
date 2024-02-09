@@ -53,12 +53,12 @@ const cardData = [
 //   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 // };
 
-const cardImageEl = cardElement.querySelector(".card__image");
+// const cardImageEl = cardElement.querySelector(".card__image");
 
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+// const cardTemplate =
+//   document.querySelector("#card-template").content.firstElementChild;
 
-const previewTemplate = document.querySelector("#preview-template");
+// const previewTemplate = document.querySelector("#preview-template");
 
 // Wrappers
 const cardsWrap = document.querySelector(".cards__list");
@@ -118,10 +118,10 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
 }
-function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
-}
+// function renderCard(cardData, wrapper) {
+//   const cardElement = getCardElement(cardData);
+//   wrapper.prepend(cardElement);
+// }
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
@@ -163,42 +163,49 @@ function handleAddCardFormSubmit(e) {
   e.target.reset();
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  // const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
+// function getCardElement(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+// const cardImageEl = cardElement.querySelector(".card__image");
+// const cardTitleEl = cardElement.querySelector(".card__title");
+// const likeButton = cardElement.querySelector(".card__like-button");
+// const deleteButton = cardElement.querySelector(".card__delete-button");
 
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+// deleteButton.addEventListener("click", () => {
+//   cardElement.remove();
+// });
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+// likeButton.addEventListener("click", () => {
+//   likeButton.classList.toggle("card__like-button_active");
+// });
 
-  // handleImageClick = cardImageEl.addEventListener("click", () => {
-  //   openModal(previewImageModal);
-  //   previewImage.src = cardData.link;
-  //   previewImage.alt = `Photo of ${cardData.name}`;
-  //   previewImageLabel.textContent = cardTitleEl.textContent;
-  // });
+// handleImageClick = cardImageEl.addEventListener("click", () => {
+//   openModal(previewImageModal);
+//   previewImage.src = cardData.link;
+//   previewImage.alt = `Photo of ${cardData.name}`;
+//   previewImageLabel.textContent = cardTitleEl.textContent;
+// });
 
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-  return cardElement;
-}
+//   cardImageEl.src = cardData.link;
+//   cardImageEl.alt = cardData.name;
+//   cardTitleEl.textContent = cardData.name;
+//   return cardElement;
+// }
 
-function handleImageClick() {
+// function handleImageClick() {
+//   openModal(previewImageModal);
+//   previewImage.src = cardData.link;
+//   previewImage.alt = `Photo of ${cardData.name}`;
+//   previewImageLabel.textContent = cardTitleEl.textContent;
+// }
+
+function handleImageClick(name, link) {
   openModal(previewImageModal);
-  previewImage.src = cardData.link;
-  previewImage.alt = `Photo of ${cardData.name}`;
-  previewImageLabel.textContent = cardTitleEl.textContent;
+  previewImage.src = link;
+  previewImage.alt = `Photo of ${name}`;
+  previewImageLabel.textContent = name;
 }
 
-cardImageEl.addEventListener("click", handleImageClick);
+// cardImageEl.addEventListener("click", handleImageClick);
 
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Listeners                                ||
@@ -241,5 +248,5 @@ cards.forEach((card) => {
   const cardElement = card.getView();
   // Append cardElement to the DOM, assuming you have a container element
   // For example:
-  document.querySelector(".cards-container").appendChild(cardElement);
+  document.querySelector(".cards__list").appendChild(cardElement);
 });
