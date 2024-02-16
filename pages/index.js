@@ -17,6 +17,16 @@ const profileForm = document.querySelector("#profile-edit-modal .modal__form");
 const profileFormValidator = new FormValidator(validationSettings, profileForm);
 profileFormValidator.enableValidation();
 
+const addCardFormElement = document.querySelector(
+  "#add-card-modal .modal__form"
+);
+
+const addCardFormValidator = new FormValidator(
+  validationSettings,
+  addCardFormElement
+);
+addCardFormValidator.enableValidation();
+
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                    Elements                                    ||
 // ! ||--------------------------------------------------------------------------------||
@@ -66,13 +76,18 @@ const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditModalContainer = document.querySelector(
   "#profile-edit-modal-container"
 );
+
+//Notice the discrepancy  between how you select
+// const addCardModal = document.querySelector("#add-card-modal");
+// vs
+// const profileFormElement = profileEditModal.querySelector(".modal__form");
 const modalContainer = document.querySelector(".modal__container");
 const imageModalContainer = document.querySelector(".modal__preview-image");
 const addCardModal = document.querySelector("#add-card-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
 const profileFormElement = profileEditModal.querySelector(".modal__form");
-const addCardFormElement = addCardModal.querySelector(".modal__form");
 const modalElements = document.querySelectorAll(".modal");
+// const modalElements = document.querySelector("#add-card-modal .modal__form")
 const previewImage = document.querySelector(".modal__preview-image");
 const previewImageLabel = previewImageModal.querySelector(
   ".modal__image-label"
@@ -154,14 +169,25 @@ function handleProfileEditSubmit(e) {
   closeModal(profileEditModal);
 }
 
+// Update the event listener for form submission
 function handleAddCardFormSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardURLInput.value;
-  renderCard({ name, link }, cardsWrap);
+
+  // Create a new instance of Card with the submitted data
+  const newCard = new Card({ name, link }, "#card-template", handleImageClick);
+
+  // Get the view of the new card and append it to the DOM
+  const newCardElement = newCard.getView();
+  document.querySelector(".cards__list").appendChild(newCardElement);
+
   closeModal(addCardModal);
   e.target.reset();
 }
+
+// Attach the event listener to the form
+addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 // function getCardElement(cardData) {
 //   const cardElement = cardTemplate.cloneNode(true);
@@ -250,3 +276,6 @@ cards.forEach((card) => {
   // For example:
   document.querySelector(".cards__list").appendChild(cardElement);
 });
+
+const testSaveButton = addCardModal.querySelector(".modal__save-button");
+console.log(testSaveButton.validity);
