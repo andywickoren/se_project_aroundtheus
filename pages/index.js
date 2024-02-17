@@ -10,16 +10,18 @@ const validationSettings = {
   errorClass: "modal__error_visible",
 };
 
+//call reset
+
 // Get the profile form element
 const profileForm = document.querySelector("#profile-edit-modal .modal__form");
-
-// Create an instance of FormValidator and enable validation for the profile form
-const profileFormValidator = new FormValidator(validationSettings, profileForm);
-profileFormValidator.enableValidation();
 
 const addCardFormElement = document.querySelector(
   "#add-card-modal .modal__form"
 );
+
+// Create an instance of FormValidator and enable validation for the profile form
+const profileFormValidator = new FormValidator(validationSettings, profileForm);
+profileFormValidator.enableValidation();
 
 const addCardFormValidator = new FormValidator(
   validationSettings,
@@ -184,6 +186,7 @@ function handleAddCardFormSubmit(e) {
 
   closeModal(addCardModal);
   e.target.reset();
+  addCardFormValidator.resetValidation();
 }
 
 // Attach the event listener to the form
