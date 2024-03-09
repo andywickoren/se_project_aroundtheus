@@ -43,6 +43,7 @@ export default class Card {
     this._deleteButton = this._cardElement.querySelector(
       ".card__delete-button"
     );
+
     this._setEventListeners();
     return this._cardElement;
   }

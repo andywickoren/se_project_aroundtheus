@@ -181,3 +181,10 @@ initialCards.forEach((card) => {
   const cardElement = createCard(card);
   cardsList.appendChild(cardElement);
 });
+
+// Sprint8
+
+const newCardModal = new ModalWithForm("#add-card-modal", () => {});
+newCardModal.open();
+
+newCardModal.close();
