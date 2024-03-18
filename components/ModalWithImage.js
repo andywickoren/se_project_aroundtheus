@@ -2,7 +2,7 @@ import Modal from "./Modal.js";
 
 export default class ModalWithImage extends Modal {
   constructor({ name, link }, modalSelector) {
-    super({ modalSelector }); // Call the constructor of the parent class with the modalSelector
+    super(modalSelector); // Call the constructor of the parent class with the modalSelector
     this._name = name;
     this._link = link;
   }

@@ -100,13 +100,13 @@ const cardURLInput = addCardFormElement.querySelector(".modal__input_type_url");
 // // ! ||                                   Functions;                                   ||
 // // ! ||--------------------------------------------------------------------------------||
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscape);
-}
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", handleEscape);
+// }
 
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
+  modal.classList.remove("modal__opened");
   document.removeEventListener("keydown", handleEscape);
 }
 
@@ -126,26 +126,28 @@ function handleModalClose(evt) {
   }
 }
 
-modalElements.forEach((modal) => {
-  modal.addEventListener("mousedown", handleModalClose);
-});
+// modalElements.forEach((modal) => {
+//   modal.addEventListener("mousedown", handleModalClose);
+// });
 
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                 Event Handlers                                 ||
 // // ! ||--------------------------------------------------------------------------------||
 
 // old logic
-// function createCard({ name, link }) {
-//   const newCard = new Card({ name, link }, "#card-template", handleImageClick);
-//   const newCardElement = newCard.getView();
-//   return newCardElement;
-// }
+function createCard({ name, link }) {
+  const newCard = new Card({ name, link }, "#card-template", handleImageClick);
+  const newCardElement = newCard.getView();
+  return newCardElement;
+}
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
+  e.target.reset();
+  profileFormValidator.resetValidation();
 }
 
 function handleAddCardFormSubmit(e) {
@@ -200,6 +202,7 @@ profileEditButton.addEventListener("click", () => {
   );
 
   profileEditModal.open();
+  profileEditModal.setEventListeners();
 });
 
 // With object literals, not working
@@ -212,18 +215,31 @@ profileEditButton.addEventListener("click", () => {
 //   modal.open();
 // });
 
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+//HERE
 
-// This is the old logic
-// initialCards.forEach((card) => {
-//   const cardElement = createCard(card);
-//   cardsList.appendChild(cardElement);
-// });
+// addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+// addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
-const newCardModal = new ModalWithForm("#add-card-modal", () => {});
-newCardModal.open();
+addNewCardButton.addEventListener("click", () => {
+  console.log("test");
+  const addCardModal = new ModalWithForm(
+    "#add-card-modal",
+    handleAddCardFormSubmit
+  );
+  addCardModal.open();
+  addCardModal.setEventListeners();
+});
 
-newCardModal.close();
+// // This is the old logic
+// // initialCards.forEach((card) => {
+// //   const cardElement = createCard(card);
+// //   cardsList.appendChild(cardElement);
+// // });
+
+// const newCardModal = new ModalWithForm("#add-card-modal", () => {});
+// newCardModal.open();
+
+// newCardModal.close();
 
 // index.js;
 const cardsList = new Section(

@@ -4,11 +4,14 @@ export default class Modal {
   }
 
   open() {
+    console.log(this._modalElement);
     this._modalElement.classList.add("modal__opened");
     document.addEventListener("keydown", this._handleEscape);
+    console.log("Modal");
   }
 
   close() {
+    console.log(this._modalElement);
     this._modalElement.classList.remove("modal__opened");
     document.removeEventListener("keydown", this._handleEscape);
   }

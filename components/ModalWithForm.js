@@ -10,9 +10,9 @@ import Modal from "./Modal.js";
 export default class ModalWithForm extends Modal {
   constructor(modalSelector, handleFormSubmit) {
     super(modalSelector);
-    console.log("Modal element:", this._modalElement); // Log the modal element
+    console.log("Modal element:", this._modalElement); // This works, so it's connected
     this._modalForm = this._modalElement.querySelector(".modal__form");
-    console.log("Modal form:", this._modalForm); // Log the modal form
+    console.log("Modal form:", this._modalForm); // This shows the corerct element
     this._handleFormSubmit = handleFormSubmit;
   }
 
@@ -43,5 +43,6 @@ export default class ModalWithForm extends Modal {
 
   open() {
     super.open();
+    console.log("open");
   }
 }
