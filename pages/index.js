@@ -60,7 +60,10 @@ const initialCards = [
 ];
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const addCardModal = document.querySelector("#add-card-modal");
+const addCardModal = new ModalWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
 const previewImageModal = document.querySelector("#preview-image-modal");
 const profileFormElement = profileEditModal.querySelector(".modal__form");
 const modalElements = document.querySelectorAll(".modal");
@@ -74,9 +77,9 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileModalCloseButton = profileEditModal.querySelector(
   "#edit-modal-close-button"
 );
-const addCardModalCloseButton = addCardModal.querySelector(
-  "#add-card-modal-close-button"
-);
+// const addCardModalCloseButton = addCardModal.querySelector(
+//   "#add-card-modal-close-button"
+// );
 const previewModalCloseButton = previewImageModal.querySelector(
   "#preview-modal-close-button"
 );
@@ -110,21 +113,21 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscape);
 }
 
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    const openModals = document.querySelectorAll(".modal_opened");
-    openModals.forEach(closeModal);
-  }
-}
+// function handleEscape(evt) {
+//   if (evt.key === "Escape") {
+//     const openModals = document.querySelectorAll(".modal_opened");
+//     openModals.forEach(closeModal);
+//   }
+// }
 
-function handleModalClose(evt) {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(evt.currentTarget);
-  }
-}
+// function handleModalClose(evt) {
+//   if (
+//     evt.target.classList.contains("modal") ||
+//     evt.target.classList.contains("modal__close")
+//   ) {
+//     closeModal(evt.currentTarget);
+//   }
+// }
 
 // modalElements.forEach((modal) => {
 //   modal.addEventListener("mousedown", handleModalClose);
@@ -141,22 +144,21 @@ function createCard({ name, link }) {
   return newCardElement;
 }
 
+//this is be implemented with UserInfo class/methodos
 function handleProfileEditSubmit(e) {
-  e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+  profileEditModal.close; // why not addCardModal.close() ?
   e.target.reset();
   profileFormValidator.resetValidation();
 }
 
 function handleAddCardFormSubmit(e) {
-  e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardURLInput.value;
   const newCardElement = createCard({ name, link });
-  cardsList.prepend(newCardElement);
-  closeModal(addCardModal);
+  cardsList.prependItem(newCardElement);
+  addCardModal.close(); // same here
   e.target.reset();
   addCardFormValidator.resetValidation();
 }
@@ -181,8 +183,23 @@ function handleImageClick(name, link) {
 
 // Form Listeners
 
-profileFormElement.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+// profileFormElement.addEventListener("submit", handleProfileEditSubmit);
+// addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+
+const cardsList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, "#card-template", handleImageClick);
+      const cardElement = card.getView();
+      cardsList.addItem(cardElement);
+      //logic
+    },
+  },
+  cardListSelector
+);
+
+cardsList.renderItems();
 
 // old logic
 // profileEditButton.addEventListener("click", () => {
@@ -222,12 +239,11 @@ profileEditButton.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => {
   console.log("test");
-  const addCardModal = new ModalWithForm(
-    "#add-card-modal",
-    handleAddCardFormSubmit
-  );
+  // const addCardModal = new ModalWithForm(
+  //   "#add-card-modal",
+  //   handleAddCardFormSubmit
+  // );
   addCardModal.open();
-  addCardModal.setEventListeners();
 });
 
 // // This is the old logic
@@ -242,17 +258,3 @@ addNewCardButton.addEventListener("click", () => {
 // newCardModal.close();
 
 // index.js;
-const cardsList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, "#card-template", handleImageClick);
-      const cardElement = card.getView();
-      cardsList.addItem(cardElement);
-      //logic
-    },
-  },
-  cardListSelector
-);
-
-cardsList.renderItems();

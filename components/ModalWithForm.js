@@ -10,10 +10,11 @@ import Modal from "./Modal.js";
 export default class ModalWithForm extends Modal {
   constructor(modalSelector, handleFormSubmit) {
     super(modalSelector);
-    console.log("Modal element:", this._modalElement); // This works, so it's connected
+    this._handleFormSubmit = handleFormSubmit.bind(this);
+    // console.log("Modal element:", this._modalElement); // This works, so it's connected
     this._modalForm = this._modalElement.querySelector(".modal__form");
-    console.log("Modal form:", this._modalForm); // This shows the corerct element
-    this._handleFormSubmit = handleFormSubmit;
+    // console.log("Modal form:", this._modalForm); // This shows the corerct element
+    // this._handleFormSubmit = handleFormSubmit;
   }
 
   _getInputValues() {
@@ -28,11 +29,13 @@ export default class ModalWithForm extends Modal {
   }
 
   setEventListeners() {
-    super.setEventListeners(); // Call the parent method to retain its functionality
+    super.setEventListeners();
     this._modalForm.addEventListener("submit", (event) => {
-      event.preventDefault(); // Prevent default form submission
+      console.log(3);
+      event.preventDefault();
       const inputValues = this._getInputValues();
-      this._handleFormSubmit(inputValues); // Pass input values to the provided handler
+      this._handleFormSubmit(inputValues);
+      // this._modalForm.removeEventListeners();
     });
   }
 
