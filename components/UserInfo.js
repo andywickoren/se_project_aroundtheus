@@ -26,7 +26,6 @@ export default class UserInfo {
     profileName.textContent = profileNameInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closeModal(profileEditModal);
-    e.target.reset();
     profileFormValidator.resetValidation();
   }
 }

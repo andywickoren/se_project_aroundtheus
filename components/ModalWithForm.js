@@ -35,12 +35,13 @@ export default class ModalWithForm extends Modal {
       event.preventDefault();
       const inputValues = this._getInputValues();
       this._handleFormSubmit(inputValues);
-      // this._modalForm.removeEventListeners();
+      this._modalForm.removeEventListener("submit", this._handleFormSubmit);
     });
   }
 
   close() {
     this._modalForm.reset();
+    this._modalElement.removeEventListener("mousedown", this._handleModalClose);
     super.close();
   }
 

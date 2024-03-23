@@ -158,8 +158,9 @@ function handleAddCardFormSubmit(e) {
   const link = cardURLInput.value;
   const newCardElement = createCard({ name, link });
   cardsList.prependItem(newCardElement);
-  addCardModal.close(); // same here
-  e.target.reset();
+  addCardModal.close();
+  // same here
+  // e.target.reset();
   addCardFormValidator.resetValidation();
 }
 
