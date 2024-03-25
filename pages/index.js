@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import ModalWithImage from "../components/ModalWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const validationSettings = {
   formSelector: ".modal__form",
@@ -60,10 +61,15 @@ const initialCards = [
 ];
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
+// const addCardModal = new ModalWithForm(
+//   "#add-card-modal",
+//   handleAddCardFormSubmit
+// );
 const addCardModal = new ModalWithForm(
   "#add-card-modal",
   handleAddCardFormSubmit
 );
+
 const previewImageModal = document.querySelector("#preview-image-modal");
 const profileFormElement = profileEditModal.querySelector(".modal__form");
 const modalElements = document.querySelectorAll(".modal");
@@ -144,14 +150,47 @@ function createCard({ name, link }) {
   return newCardElement;
 }
 
+//Form data
+// const profileName = document.querySelector(".profile__name");
+// const profileDescription = document.querySelector(".profile__description");
+
+const userInfo = new UserInfo({
+  profileName: profileName,
+  profileDescription: profileDescription,
+});
+
+// const currentUser = userInfo.getUserInfo();
+// console.log(currentUser.name);
+
+// console.log(currentUser.description);
+
+// profileForm.addEventListener("submit", (e) => {
+//   userProfile.getUserInfo(profileName, profileDescription);
+//   userProfile.setUserInfo(profileName, profileDescription);
+//   profileFormValidator.resetValidation();
+//   profileEditPopup.close();
+// });
 //this is be implemented with UserInfo class/methodos
 function handleProfileEditSubmit(e) {
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  profileEditModal.close; // why not addCardModal.close() ?
-  e.target.reset();
+  profileEditPopup.close(); // why not addCardModal.close() ?
+  // e.target.reset();
   profileFormValidator.resetValidation();
 }
+
+// function handleProfileEditSubmit(e) {
+//   const formData = {
+//     profileName: profileNameInput.value,
+//     profileDescription: profileDescriptionInput.value,
+//   };
+//   console.log(formData);
+//   const userInfo = new UserInfo(formData);
+//   userInfo.setUserInfo();
+
+//   profileEditModal.close();
+//   profileFormValidator.resetValidation();
+// }
 
 function handleAddCardFormSubmit(e) {
   const name = cardTitleInput.value;
@@ -173,9 +212,9 @@ function handleAddCardFormSubmit(e) {
 //   previewImageLabel.textContent = name;
 // }
 
+const imageModal = new ModalWithImage("#preview-image-modal");
 function handleImageClick(name, link) {
-  const imageModal = new ModalWithImage({ name, link }, "#preview-image-modal");
-  imageModal.open();
+  imageModal.open(name, link);
 }
 
 // // ! ||--------------------------------------------------------------------------------||
@@ -209,20 +248,6 @@ cardsList.renderItems();
 //   openModal(profileEditModal);
 // });
 
-profileEditButton.addEventListener("click", () => {
-  console.log("test");
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-
-  const profileEditModal = new ModalWithForm(
-    "#profile-edit-modal",
-    handleProfileEditSubmit
-  );
-
-  profileEditModal.open();
-  profileEditModal.setEventListeners();
-});
-
 // With object literals, not working
 // profileEditButton.addEventListener("click", () => {
 //   const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -245,6 +270,27 @@ addNewCardButton.addEventListener("click", () => {
   //   handleAddCardFormSubmit
   // );
   addCardModal.open();
+});
+
+const profileEditPopup = new ModalWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
+
+profileEditPopup.setEventListeners();
+addCardModal.setEventListeners();
+
+profileEditButton.addEventListener("click", () => {
+  const currentUserInfo = userInfo.getUserInfo();
+  profileNameInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.description;
+  profileEditPopup.open();
+
+  //getUserInfo()
+  // profileNameInput.value = profileName.textContent;
+  // profileDescriptionInput.value = profileDescription.textContent;
+
+  // profileEditPopup.open();
 });
 
 // // This is the old logic

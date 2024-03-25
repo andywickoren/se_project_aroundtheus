@@ -5,18 +5,14 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    const profileName = document.querySelector(".profile__name");
-    const profileDescription = document.querySelector(
-      ".profile__description"
-    ).textContent;
-
     return {
-      name: this._profileName,
-      description: this._profileDescription,
+      name: this._profileName.textContent,
+      description: this._profileDescription.textContent,
     };
   }
 
-  setUserInfo(profileName, profileDescription) {
+  setUserInfo({ profileName, profileDescription }) {
+    /*
     const profileNameInput = profileFormElement.querySelector(
       ".modal__input_type_name"
     );
@@ -27,5 +23,8 @@ export default class UserInfo {
     profileDescription.textContent = profileDescriptionInput.value;
     closeModal(profileEditModal);
     profileFormValidator.resetValidation();
+    */
+    this._profileName = profileName;
+    this._profileDescription = profileDescription;
   }
 }
