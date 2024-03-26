@@ -277,6 +277,7 @@ const profileEditPopup = new ModalWithForm(
   handleProfileEditSubmit
 );
 
+imageModal.setEventListeners();
 profileEditPopup.setEventListeners();
 addCardModal.setEventListeners();
 
