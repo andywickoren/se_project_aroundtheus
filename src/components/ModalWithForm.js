@@ -1,20 +1,10 @@
 import Modal from "./Modal.js";
 
-// export default class ModalWithForm extends Modal {
-//   constructor({ modalSelector, handleFormSubmit }) {
-//     super({ modalSelector });
-//     this._modalForm = this._modalElement.querySelector(".modal__form");
-//     this._handleFormSubmit = handleFormSubmit;
-//   }
-
 export default class ModalWithForm extends Modal {
   constructor(modalSelector, handleFormSubmit) {
     super(modalSelector);
     this._handleFormSubmit = handleFormSubmit.bind(this);
-    // console.log("Modal element:", this._modalElement); // This works, so it's connected
     this._modalForm = this._modalElement.querySelector(".modal__form");
-    // console.log("Modal form:", this._modalForm); // This shows the corerct element
-    // this._handleFormSubmit = handleFormSubmit;
   }
 
   _getInputValues() {

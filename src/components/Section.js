@@ -7,7 +7,7 @@ export default class Section {
 
   renderItems() {
     this._items.forEach((item) => {
-      this._renderer(item); // call renderer() and pass item to it
+      this._renderer(item);
     });
   }
 
@@ -19,11 +19,3 @@ export default class Section {
     this._container.prepend(element);
   }
 }
-
-// index.js
-// const cardsList = new Section({
-//     items: intialCards,
-//     renderer: () => {
-//         //logic
-//     }
-// });
