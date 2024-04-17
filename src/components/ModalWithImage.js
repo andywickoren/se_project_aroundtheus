@@ -11,7 +11,6 @@ export default class ModalWithImage extends Modal {
     this._image.src = link;
     this._name.textContent = name;
     this._image.alt = `Photo of ${this._name}`;
-
     super.open();
   }
 }

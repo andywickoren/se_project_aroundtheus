@@ -6,8 +6,6 @@ export default class Modal {
   }
 
   open() {
-    console.log("Modal");
-    console.log(this._modalElement);
     this._modalElement.classList.add("modal__opened");
     document.addEventListener("keydown", this._handleEscape);
   }
@@ -33,8 +31,6 @@ export default class Modal {
   }
 
   setEventListeners() {
-    console.log(1);
-    this._closeButton.addEventListener("click", () => this.close());
     this._modalElement.addEventListener("mousedown", this._handleModalClose);
   }
 }
