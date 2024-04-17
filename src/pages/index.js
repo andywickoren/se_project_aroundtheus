@@ -76,20 +76,20 @@ function createCard({ name, link }) {
 // // ! ||--------------------------------------------------------------------------------||
 
 function handleAddCardFormSubmit(inputValues) {
+  console.log(this._modalForm);
   const name = inputValues.title;
   const link = inputValues.url;
   const newCardElement = createCard({ name, link });
   cardsList.prependItem(newCardElement);
   addCardModal.close();
   addCardFormValidator.resetValidation();
-  this._modalForm.reset();
+  addCardModal.reset();
 }
 
 function handleProfileEditSubmit(inputValues) {
   userInfo.setUserInfo(inputValues);
   profileEditPopup.close();
-  profileFormValidator.resetValidation();
-  this._modalForm.reset();
+  profileEditPopup.reset();
 }
 
 function handleImageClick(name, link) {
@@ -117,5 +117,6 @@ profileEditButton.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
   profileNameInput.value = currentUserInfo.name;
   profileDescriptionInput.value = currentUserInfo.description;
+  profileFormValidator.resetValidation();
   profileEditPopup.open();
 });
