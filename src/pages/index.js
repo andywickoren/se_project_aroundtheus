@@ -120,3 +120,15 @@ profileEditButton.addEventListener("click", () => {
   profileFormValidator.resetValidation();
   profileEditPopup.open();
 });
+
+// fetch("https://api.kanye.rest")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
+
+// fetch("https://api.kanye.rest")
+//   .then((res) => res.text())
+//   .then((data) => {
+//     console.log(data);
+//   });
