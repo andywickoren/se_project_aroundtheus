@@ -114,8 +114,8 @@ api
   .getUserInfo()
   .then((userData) => {
     userInfo.setUserInfo({
-      userName: userData.name,
-      userDescriptionL: userData.about,
+      title: userData.name,
+      description: userData.about,
     });
   })
   .catch((err) => {
