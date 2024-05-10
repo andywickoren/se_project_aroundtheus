@@ -18,6 +18,46 @@ import {
   profileNameInput,
   profileDescriptionInput,
 } from "../utils/constants.js";
+import Api from "../components/Api";
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "20e48b0c-8946-48f3-99d9-01b588193102",
+    "Content-Type": "application/json",
+  },
+});
+
+// GET https://around-api.en.tripleten-services.com/v1/users/me
+
+// fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+//   headers: {
+//     authorization: "0afca99d-8153-447a-a5a2-e86af97bee8f",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((result) => {
+//     console.log(result);
+//   });
+
+// api
+//   .getInitialCards()
+//   .then((result) => {
+//     console.log(result);
+//     // process the result
+//   })
+//   .catch((err) => {
+//     console.error(err); // log the error to the console
+//   });
+
+// api
+//   .getUserInfo()
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.error(err); // log the error to the console
+//   });
 
 const profileFormValidator = new FormValidator(validationSettings, profileForm);
 
@@ -37,21 +77,30 @@ const addCardModal = new ModalWithForm(
   handleAddCardFormSubmit
 );
 
-const cardsList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item);
-      cardsList.addItem(cardElement);
-    },
-  },
-  cardListSelector
-);
+api
+  .getInitialCards()
+  .then((cards) => {
+    const cardsList = new Section(
+      {
+        items: cards,
+        renderer: (card) => {
+          const cardElement = createCard(card);
+          cardsList.addItem(cardElement);
+        },
+      },
+      cardListSelector
+    );
+    cardsList.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
+
+// api.getInitialCards().then((cards) => {
+//   cardsList.renderItems(cards);
+// });
 
 const imageModal = new ModalWithImage("#preview-image-modal");
-
-cardsList.renderItems();
-
 addCardFormValidator.enableValidation();
 
 //Form data
@@ -61,6 +110,17 @@ const userInfo = new UserInfo({
   profileDescription: profileDescription,
 });
 
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({
+      userName: userData.name,
+      userDescriptionL: userData.about,
+    });
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
 // // ! ||--------------------------------------------------------------------------------||
 // // ! ||                                   Functions;                                   ||
 // // ! ||--------------------------------------------------------------------------------||
