@@ -72,6 +72,15 @@
   margin: 0 0 54px 0;
 }
 
+.modal__heading_delete-card {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000;
+  margin: 0 0 38px 0;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -131,6 +140,18 @@
 
 .modal__save-button_disabled {
   opacity: 0.5;
+}
+
+#modal__confirm-card-delete {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 50px;
+  border-radius: 2px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
 }
 
 .modal__preview-image {

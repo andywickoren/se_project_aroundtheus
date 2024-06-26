@@ -30,6 +30,10 @@ export default class Modal {
     }
   }
 
+  getElement() {
+    return this._modalElement;
+  }
+
   setEventListeners() {
     this._modalElement.addEventListener("mousedown", this._handleModalClose);
   }
