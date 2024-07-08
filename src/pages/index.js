@@ -150,30 +150,55 @@ api
 // ModalWithFormSubmit
 const modalElement = deleteCardModal.getElement();
 
-function handleDeleteClick() {
-  const id = this.getID();
-  deleteCardModal.open();
-  console.log(modalElement);
-  const confirmDeleteElement = modalElement.querySelector(
-    "#modal__confirm-card-delete"
-  );
-  console.log(confirmDeleteElement);
-  confirmDeleteElement.addEventListener("click", () => {
-    api.removeCard(id).then(() => {
-      this.handleDeleteCard();
-    });
+// function handleDeleteClick() {
+//   const id = this.getID();
+//   deleteCardModal.open();
+//   console.log(modalElement);
+//   const confirmDeleteElement = modalElement.querySelector(
+//     "#modal__confirm-card-delete"
+//   );
+//   console.log(confirmDeleteElement);
+//   confirmDeleteElement.addEventListener("click", () => {
+//     api.removeCard(id).then(() => {
+//       this.handleDeleteCard();
+//     });
+//   });
+// }
+
+function handleDeleteClick(card) {
+  const id = card.getID();
+  console.log(id);
+  deleteCardModal.open(() => {
+    api
+      .removeCard(id)
+      .then(() => {
+        console.log("Card removed successfully");
+        card.handleDeleteCard();
+        deleteCardModal.close();
+      })
+      .catch((error) => {
+        console.error("Error removing card:", error);
+      });
   });
 }
+// deleteCardModal.open(() => {
+//     api.removeCard(id).then(() => {
+//       console.log("done");
+//       card.handleDeleteCard();
+//       deleteCardModal.close();
+//     });
+//   });
+// }
 
-const confirmDeleteElement = modalElement.querySelector(
-  "#modal__confirm-card-delete"
-);
+// const confirmDeleteElement = modalElement.querySelector(
+//   "#modal__confirm-card-delete"
+// );
 
-confirmDeleteElement.addEventListener("click", () => {
-  api.removeCard(id).then(() => {
-    this.handleDeleteCard();
-  });
-});
+// confirmDeleteElement.addEventListener("click", () => {
+//   api.removeCard(id).then(() => {
+//     this.handleDeleteCard();
+//   });
+// });
 
 deleteCardModal.setSubmitAction(handleDeleteClick);
 

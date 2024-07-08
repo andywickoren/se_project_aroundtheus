@@ -43,7 +43,7 @@ export default class Card {
     // });
 
     this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteClick();
+      this._handleDeleteClick(this);
     });
 
     this._cardImage.src = this._link;

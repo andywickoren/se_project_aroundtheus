@@ -17,15 +17,22 @@ export default class ModalWithFormSubmit extends Modal {
 
   setEventListeners() {
     super.setEventListeners();
-    confirmDeleteElement.addEventListener("click", () => {
-      this._submitCallback;
+    const confirmDeleteElement = this._modalElement.querySelector(
+      "#modal__confirm-card-delete"
+    );
+    const form = this._modalElement.querySelector(".modal__form");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (this._submitCallback) {
+        this._submitCallback();
+      }
     });
   }
 
   //this does the close
 
-  open() {
-    this.setSubmitAction();
+  open(submitCallback) {
+    this.setSubmitAction(submitCallback);
     super.open();
   }
 }
