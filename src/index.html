@@ -159,6 +159,30 @@
         <p class="modal__image-label">The Grand Canyon</p>
       </div>
     </div>
+    <!--Update Avatar modal-->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="profile-submit-button"
+        ></button>
+        <h3 class="modal__heading_profile-submit">Change profile picture</h3>
+        <form class="modal__form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_avatar-link"
+              type="url"
+              id="avatar-image-url"
+              name="url"
+              placeholder="Avatar URL"
+              required />
+            <span class="modal__error" id="card-title-error"></span
+          ></label>
+          <button id="modal__confirm-card-delete" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
 
     <template id="card-template">
       <li class="card">

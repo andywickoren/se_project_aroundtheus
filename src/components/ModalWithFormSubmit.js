@@ -9,7 +9,7 @@
 import Modal from "./Modal.js";
 
 export default class ModalWithFormSubmit extends Modal {
-  setSubmitAction(submitCallback) {
+  _setSubmitAction(submitCallback) {
     this._submitCallback = submitCallback;
     // api.removeCard(id).then(() => {
     //     this.handleDeleteCard();
@@ -17,9 +17,9 @@ export default class ModalWithFormSubmit extends Modal {
 
   setEventListeners() {
     super.setEventListeners();
-    const confirmDeleteElement = this._modalElement.querySelector(
-      "#modal__confirm-card-delete"
-    );
+    // const confirmDeleteElement = this._modalElement.querySelector(
+    //   "#modal__confirm-card-delete"
+    // );
     const form = this._modalElement.querySelector(".modal__form");
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -32,7 +32,7 @@ export default class ModalWithFormSubmit extends Modal {
   //this does the close
 
   open(submitCallback) {
-    this.setSubmitAction(submitCallback);
+    this._setSubmitAction(submitCallback);
     super.open();
   }
 }
