@@ -34,6 +34,25 @@ export default class Api {
     //   });
   }
 
+  updateUserInfo(inputValues) {
+    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+      method: "PATCH",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: inputValues.title,
+        about: inputValues.description,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
@@ -48,6 +67,23 @@ export default class Api {
     //   .catch((err) => {
     //     console.error(err);
   }
+
+  //   getProfilePicture() {
+  //     return fetch(`${this._baseUrl}/users/me/avatar`, {
+  //       headers: {
+  //         authorization: this._authToken,
+  //       },
+  //     }).then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       return Promise.reject(`Error: ${res.status}`);
+  //     });
+  //   .catch((err) => {
+  //     console.error(err);
+  //   }
+
+  //   getProfilePicture() {}
 
   /*Cards should be rendered after the user information is received from the server. 
     Сreate a function in Api.js and return the Promise.all() method. 

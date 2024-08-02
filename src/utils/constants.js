@@ -55,3 +55,7 @@ export const profileNameInput = profileFormElement.querySelector(
 export const profileDescriptionInput = profileFormElement.querySelector(
   ".modal__input_type_description"
 );
+
+export const avatarImage = document.querySelector(".profile__image");
+
+// export const avatar = document.querySelector(".avatar1");

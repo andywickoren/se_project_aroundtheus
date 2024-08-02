@@ -5,7 +5,12 @@ export default class ModalWithForm extends Modal {
     super(modalSelector);
     this._handleFormSubmit = handleFormSubmit.bind(this);
     this._modalForm = this._modalElement.querySelector(".modal__form");
+    this._submitButton = this._modalElement.querySelector(
+      ".modal__save-button"
+    );
   }
+
+  variableTest() {}
 
   _getInputValues() {
     const inputs = this._modalForm.querySelectorAll(".modal__input");
@@ -25,6 +30,20 @@ export default class ModalWithForm extends Modal {
       const inputValues = this._getInputValues();
       this._handleFormSubmit(inputValues);
     });
+  }
+
+  setLoading() {
+    this._submitButton.textContent = "Saving...";
+    // setLoading(isLoading, text) {
+    // if (isLoading) {
+    //   this._submitButton.textContent = "Saving...";
+    // } else {
+    //   this._submitButton.textContent = text;
+    // }
+  }
+
+  resetButton() {
+    this._submitButton.textContent = "Save";
   }
 
   reset() {

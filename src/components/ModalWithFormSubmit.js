@@ -11,6 +11,7 @@ import Modal from "./Modal.js";
 export default class ModalWithFormSubmit extends Modal {
   _setSubmitAction(submitCallback) {
     this._submitCallback = submitCallback;
+    this._submitButton = document.querySelector("#modal__confirm-card-delete");
     // api.removeCard(id).then(() => {
     //     this.handleDeleteCard();
   }
@@ -27,6 +28,14 @@ export default class ModalWithFormSubmit extends Modal {
         this._submitCallback();
       }
     });
+  }
+
+  setLoading() {
+    this._submitButton.textContent = "Saving...";
+  }
+
+  resetButtonText() {
+    this._submitButton.textContent = "Yes";
   }
 
   //this does the close
