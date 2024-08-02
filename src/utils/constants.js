@@ -57,5 +57,4 @@ export const profileDescriptionInput = profileFormElement.querySelector(
 );
 
 export const avatarImage = document.querySelector(".profile__image");
-
-// export const avatar = document.querySelector(".avatar1");
+export const avatarButton = document.querySelector(".avatar__button");

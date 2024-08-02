@@ -9,12 +9,11 @@ export default class Card {
   ) {
     this._name = data.name;
     this._link = data.link;
-    this._id = data._id; //you added this underscore based on the brief
+    this._id = data._id;
     this._isLiked = data.isLiked || false;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
-    // this._deleteCardModal = deleteCardModal;
     this._handleAddLike = handleAddLike;
     this._handleRemoveLike = handleRemoveLike;
   }
@@ -40,7 +39,6 @@ export default class Card {
         this._handleAddLike(this);
       }
     });
-    // });
 
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteClick(this);

@@ -34,12 +34,6 @@ export default class ModalWithForm extends Modal {
 
   setLoading() {
     this._submitButton.textContent = "Saving...";
-    // setLoading(isLoading, text) {
-    // if (isLoading) {
-    //   this._submitButton.textContent = "Saving...";
-    // } else {
-    //   this._submitButton.textContent = text;
-    // }
   }
 
   resetButton() {
