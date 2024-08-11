@@ -163,6 +163,11 @@
   border: none;
 }
 
+#modal__confirm-card-delete:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
 .modal__preview-image {
   max-width: 75vw;
   max-height: 75vh;
@@ -187,6 +192,9 @@
     align-self: center;
   }
 
+  .modal__comtaimer_profile-picture {
+    max-height: 225px;
+  }
   .modal__container_preview-image {
     padding: 0;
     height: auto;
@@ -196,6 +204,10 @@
     display: flex;
     background: transparent;
     flex-direction: column;
+  }
+
+  .modal__container_delete-card-modal {
+    max-height: 150px;
   }
 
   .modal__close {
@@ -242,5 +254,12 @@
 
   #preview-image-modal {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal__heading_profile-submit {
+    margin: 0 0 60px 0;
+    font-size: 20px;
   }
 }

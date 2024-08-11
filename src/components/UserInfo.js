@@ -13,7 +13,6 @@ export default class UserInfo {
   }
 
   setUserInfo({ title, description }) {
-    console.log(title);
     this._profileName.textContent = title;
     this._profileDescription.textContent = description;
   }

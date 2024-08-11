@@ -4,6 +4,7 @@ export default class ModalWithFormSubmit extends Modal {
   _setSubmitAction(submitCallback) {
     this._submitCallback = submitCallback;
     this._submitButton = document.querySelector("#modal__confirm-card-delete");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   setEventListeners() {
@@ -17,8 +18,12 @@ export default class ModalWithFormSubmit extends Modal {
     });
   }
 
-  setLoading() {
-    this._submitButton.textContent = "Saving...";
+  renderLoading(isLoading, loadingText = "Deleting...") {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
   }
 
   resetButtonText() {

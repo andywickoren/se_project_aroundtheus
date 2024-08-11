@@ -37,6 +37,7 @@ export const initialCards = [
 export const cardListSelector = ".cards__list";
 export const profileForm = document.forms["edit-modal-form"];
 export const addCardFormElement = document.forms["add-card-form"];
+export const updateAvatarForm = document.forms["update-avatar-form"];
 export const profileEditModal = document.querySelector("#profile-edit-modal");
 export const profileModalCloseButton = profileEditModal.querySelector(
   "#edit-modal-close-button"

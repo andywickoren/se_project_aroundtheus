@@ -1,51 +1,40 @@
 export default class Api {
-  constructor({ baseUrl }) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
-    this._authToken = "20e48b0c-8946-48f3-99d9-01b588193102";
+    this._headers = headers;
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: this._authToken,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+    return this._request(`${this._baseUrl}/cards`, {
+      headers: this._headers,
     });
   }
 
   updateUserInfo(inputValues) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: inputValues.title,
         about: inputValues.description,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: {
-        authorization: this._authToken,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+    return this._request(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
     });
   }
   renderCards() {
@@ -53,84 +42,44 @@ export default class Api {
   }
 
   addCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name,
         link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
   }
 
   removeCard(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      headers: this._headers,
     });
   }
 
   addLike(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return this._requeset(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "PUT",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      headers: this._headers,
     });
   }
 
   removeLike(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "DELETE",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      headers: this._headers,
     });
   }
 
   changeProfilePicture(avatarLink) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatarLink,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
   }
 }

@@ -130,7 +130,7 @@
     </div>
     <!--Delete card modal-->
     <div class="modal" id="delete-card-modal">
-      <div class="modal__container">
+      <div class="modal__container modal__container_delete-card-modal">
         <button
           class="modal__close"
           type="button"
@@ -161,25 +161,31 @@
     </div>
     <!--Update Avatar modal-->
     <div class="modal" id="update-avatar-modal">
-      <div class="modal__container">
+      <div class="modal__container modal__comtaimer_profile-picture">
         <button
           class="modal__close"
           type="button"
           id="profile-submit-button"
         ></button>
         <h3 class="modal__heading_profile-submit">Change profile picture</h3>
-        <form class="modal__form">
+        <form class="modal__form" id="update-avatar-form">
           <label class="modal__label">
             <input
-              class="modal__input modal__input_type_avatar-link"
+              class="modal__input modal__input_type_url"
               type="url"
               id="avatar-image-url"
               name="url"
               placeholder="Avatar URL"
               required />
-            <span class="modal__error" id="card-title-error"></span
+            <span class="modal__error" id="avatar-image-url-error"></span
           ></label>
-          <button class="modal__save-button" type="submit">Save</button>
+          <button
+            class="modal__save-button modal__save-button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
