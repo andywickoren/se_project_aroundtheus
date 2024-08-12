@@ -60,7 +60,7 @@ export default class Api {
   }
 
   addLike(cardID) {
-    return this._requeset(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "PUT",
       headers: this._headers,
     });
