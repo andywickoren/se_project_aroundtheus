@@ -72,6 +72,24 @@
   margin: 0 0 54px 0;
 }
 
+.modal__heading_delete-card {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000;
+  margin: 0 0 38px 0;
+}
+
+.modal__heading_profile-submit {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000;
+  margin: 0 0 38px 0;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -133,6 +151,23 @@
   opacity: 0.5;
 }
 
+#modal__confirm-card-delete {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 50px;
+  border-radius: 2px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+}
+
+#modal__confirm-card-delete:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
 .modal__preview-image {
   max-width: 75vw;
   max-height: 75vh;
@@ -157,6 +192,9 @@
     align-self: center;
   }
 
+  .modal__comtaimer_profile-picture {
+    max-height: 225px;
+  }
   .modal__container_preview-image {
     padding: 0;
     height: auto;
@@ -166,6 +204,10 @@
     display: flex;
     background: transparent;
     flex-direction: column;
+  }
+
+  .modal__container_delete-card-modal {
+    max-height: 150px;
   }
 
   .modal__close {
@@ -212,5 +254,12 @@
 
   #preview-image-modal {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal__heading_profile-submit {
+    margin: 0 0 60px 0;
+    font-size: 20px;
   }
 }

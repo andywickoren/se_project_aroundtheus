@@ -17,11 +17,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%= require('./images/jacques-cousteau.jpg')%>"
-            alt="avatar"
-            class="profile__image"
-          />
+          <div class="avatar">
+            <img
+              src="<%= require('./images/jacques-cousteau.jpg')%>"
+              alt="avatar"
+              class="profile__image"
+            />
+            <button class="avatar__button"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button
@@ -125,6 +128,21 @@
         </form>
       </div>
     </div>
+    <!--Delete card modal-->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container modal__container_delete-card-modal">
+        <button
+          class="modal__close"
+          type="button"
+          id="add-card-modal-close-button"
+        ></button>
+        <h3 class="modal__heading_delete-card">Are you sure?</h3>
+        <form class="modal__form">
+          <label class="modal__label"> </label>
+          <button id="modal__confirm-card-delete" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
     <!--Add preview image modal-->
     <div class="modal" id="preview-image-modal">
       <div class="modal__container modal__container_preview-image">
@@ -133,12 +151,38 @@
           type="button"
           id="preview-modal-close-button"
         ></button>
-        <img
-          src="./images/yosemite-valley.jpg"
-          alt="image preview"
-          class="modal__preview-image"
-        />
+        <img src="#" alt="image preview" class="modal__preview-image" />
         <p class="modal__image-label">The Grand Canyon</p>
+      </div>
+    </div>
+    <!--Update Avatar modal-->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container modal__comtaimer_profile-picture">
+        <button
+          class="modal__close"
+          type="button"
+          id="profile-submit-button"
+        ></button>
+        <h3 class="modal__heading_profile-submit">Change profile picture</h3>
+        <form class="modal__form" id="update-avatar-form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              type="url"
+              id="avatar-image-url"
+              name="url"
+              placeholder="Avatar URL"
+              required />
+            <span class="modal__error" id="avatar-image-url-error"></span
+          ></label>
+          <button
+            class="modal__save-button modal__save-button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
+        </form>
       </div>
     </div>
 
