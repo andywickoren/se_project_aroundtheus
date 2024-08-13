@@ -26,10 +26,6 @@ export default class ModalWithFormSubmit extends Modal {
     }
   }
 
-  resetButtonText() {
-    this._submitButton.textContent = "Yes";
-  }
-
   open(submitCallback) {
     this._setSubmitAction(submitCallback);
     super.open();
